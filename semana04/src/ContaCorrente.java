@@ -22,14 +22,7 @@ public class ContaCorrente {
     void depositar(double qtde){
         saldo = saldo + qtde;
     }
-
-    //transferir
-    boolean transferir(ContaCorrente destino, double qtde){
-        sacar(qtde);
-        destino.depositar(qtde);
-        return true;
-    }
-    
+ 
     //versaldo
     double verSaldo(){
         return saldo;

@@ -1,44 +1,68 @@
+import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        
-        //criando uma nova variavel do tipo ContaCorrente
-        ContaCorrente conta, conta2;
+        Scanner scan = new Scanner(System.in);
 
-        //instanciar
-        conta = new ContaCorrente();
-        conta2 = new ContaCorrente();
+        int opcao;
+        int tipoMenu = 1;
 
-        System.out.println(conta);
+        double saque;
+        double deposito;
 
-        //inicializando a instancia
-        conta.agencia = "0101-1";
-        conta.numero = "897610-1";
-        conta.cpf = "087.564.123-00";
-        conta.saldo = 1000.0;
+        ContaCorrente conta = new ContaCorrente();
 
-        //inicializando a instancia
-        conta2.agencia = "2101-2";
-        conta2.numero = "2897610-2";
-        conta2.cpf = "287.564.123-02";
-        conta2.saldo = 100.0;
-        
-        System.out.println(conta);
-        System.out.println(conta2);
+        do {
+            if (tipoMenu == 1) {
+                System.out.println("1. Criar Conta");
+                System.out.println("0. Sair");
+                System.out.print("Escolha a opção: ");
+                opcao = scan.nextInt();
+            } else {
+                System.out.println("2. Sacar");
+                System.out.println("3. Depositar");
+                System.out.println("4. Ver Saldo");
+                System.out.println("0. Sair");
+                System.out.print("Escolha a opção: ");
+                opcao = scan.nextInt();
+            }
 
-        conta.sacar(50.0);
-        conta.depositar(500);
-        
-        if(!conta.sacar(1550.0)) {
-            System.out.println("Seu saque é maior que seu saldo disponivel!");
-        }
-        
-        conta.transferir(conta2, 600.0);
+            if (opcao == 0) {
+                System.out.println("Até Mais!");
+            } else if (opcao == 1) {
+                System.out.println("Você escolheu a opção 'Cria Conta'");
+                System.out.print("Digite sua agência: ");
+                conta.agencia = scan.next();
+                System.out.print("Digite seu cartão: ");
+                conta.numero = scan.next();
+                System.out.print("Digite seu Cpf: ");
+                conta.cpf = scan.next();
 
-        System.out.println(conta.toString());
-        System.out.println(conta2.toString());
+                System.out.println(conta.toString());
+                tipoMenu = 2;
+            } else if (opcao == 2) {
+                System.out.println("Você escolheu a opção 'Sacar'");
+                System.out.print("Valor para sacar: ");
+                saque = scan.nextDouble();
 
+                if (!conta.sacar(saque)) {
+                    System.out.println("Seu saque é maior que seu saldo disponivel!");
+                } else {
+                    System.out.println("Saldo após sacar: R$" + conta.verSaldo());
+                }
+            } else if (opcao == 3) {
+                System.out.println("Você escolheu a opção 'Depositar'");
+                System.out.print("Valor para depositar: ");
+                deposito = scan.nextDouble();
 
+                conta.depositar(deposito);
+                System.out.println("Saldo após depositar: R$" + conta.verSaldo());
+            } else if (opcao == 4) {
+                System.out.println("Você escolheu a opção 'Ver Saldo'");
+                System.out.println("Seu saldo atual: R$" + conta.verSaldo());
+            }
 
-    
+            System.out.println();
+        } while (opcao != 0);
     }
 }
