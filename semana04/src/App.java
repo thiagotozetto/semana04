@@ -28,6 +28,10 @@ public class App {
         conta.sacar(50.0);
         conta.depositar(500);
         
+        if(!conta.sacar(1550.0)) {
+            System.out.println("Seu saque é maior que seu saldo disponivel!");
+        }
+        
         conta.transferir(conta2, 600.0);
 
         System.out.println(conta.toString());

@@ -11,6 +11,9 @@ public class ContaCorrente {
     
     //sacar
     boolean sacar(double qtde){
+        if (qtde > saldo){
+            return false;
+        }
         saldo = saldo - qtde;
         return true;
     }
