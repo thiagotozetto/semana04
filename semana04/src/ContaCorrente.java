@@ -2,10 +2,15 @@
 public class ContaCorrente {
     
     //atributos
+    Pessoa pessoa;
     String agencia;
     String numero;
-    String cpf;
     double saldo;
+
+    //construtor
+    ContaCorrente(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
 
     //métodos
     
@@ -28,9 +33,10 @@ public class ContaCorrente {
         return saldo;
     }
 
-    public String toString(){
-        String texto="";
-        texto = "Agencia: "+agencia+" Numero:"+numero+" Cpf:"+cpf+" Saldo R$:"+saldo;
+    public String toString() {
+        String texto = "";
+        texto = "Pessoa: " + pessoa.nome + " CPF: " + pessoa.cpf + " Agência: " + agencia + " Número: " + numero
+                + " Saldo: R$" + saldo;
         return texto;
     }
 

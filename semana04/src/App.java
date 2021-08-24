@@ -10,7 +10,8 @@ public class App {
         double saque;
         double deposito;
 
-        ContaCorrente conta = new ContaCorrente();
+        Pessoa pessoa = new Pessoa();
+        ContaCorrente conta = new ContaCorrente(pessoa);
 
         do {
             if (tipoMenu == 1) {
@@ -31,12 +32,23 @@ public class App {
                 System.out.println("Até Mais!");
             } else if (opcao == 1) {
                 System.out.println("Você escolheu a opção 'Cria Conta'");
+
+                System.out.print("Digite seu nome: ");
+                pessoa.nome = scan.next();
+                System.out.print("Digite seu CPF: ");
+                pessoa.cpf = scan.next();
+                System.out.print("Digite sua idade: ");
+                pessoa.idade = scan.nextInt();
+                System.out.print("Digite seu altura: ");
+                pessoa.altura = scan.nextDouble();
+                System.out.print("Digite seu peso: ");
+                pessoa.peso = scan.nextDouble();
+                System.out.print("Digite sua cor de cabelo: ");
+                pessoa.corcabelo = scan.next();
                 System.out.print("Digite sua agência: ");
                 conta.agencia = scan.next();
                 System.out.print("Digite seu cartão: ");
                 conta.numero = scan.next();
-                System.out.print("Digite seu Cpf: ");
-                conta.cpf = scan.next();
 
                 System.out.println(conta.toString());
                 tipoMenu = 2;
